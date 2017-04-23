@@ -14,6 +14,7 @@ public class Animal_tissue implements Serializable {
 	private static final long serialVersionUID = -7167881940806327162L;
 	@Id 
 	private Integer id;
+	private Integer borrar; //prueba
 	private String name;
 	private String typeOfTissue;
 	private String pathology;
