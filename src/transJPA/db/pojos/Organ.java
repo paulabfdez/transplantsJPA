@@ -11,6 +11,9 @@ public class Organ implements Serializable{
 
 	private static final long serialVersionUID = -5113823135998745845L;
 	@Id
+	@GeneratedValue(generator="Organs")
+	@TableGenerator(name="Organs", table="sqlite_sequence",
+	    pkColumnName="name", valueColumnName="seq", pkColumnValue="Organs")
 	private Integer id;
 	private String name;
 	private Float weight;

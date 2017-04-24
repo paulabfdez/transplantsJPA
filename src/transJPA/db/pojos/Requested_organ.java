@@ -14,6 +14,9 @@ public class Requested_organ implements Serializable {
 	private static final long serialVersionUID = 4061202503200538758L;
 	
 	@Id
+	@GeneratedValue(generator="Requested_organs")
+	@TableGenerator(name="Requested_organs", table="sqlite_sequence",
+	    pkColumnName="name", valueColumnName="seq", pkColumnValue="Requested_organs")
 	private Integer id;
 	private String name;
 	private Float maxWeight;
@@ -101,6 +104,14 @@ public class Requested_organ implements Serializable {
 		this.minWeight = minWeight;
 	}
 	
+	public List<Animal_tissue> getAnimalTissues(){
+		return animalTissues;
+	}
+	
+	public void setAnimalTissues(List<Animal_tissue> animalTissues){
+		this.animalTissues=animalTissues;
+	}
+
 	// Additional method to add to a list
 		public void addAnimalTissue(Animal_tissue animalTissue) {
 			if (!animalTissues.contains(animalTissue)) {

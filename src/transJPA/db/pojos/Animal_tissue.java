@@ -13,6 +13,9 @@ public class Animal_tissue implements Serializable {
 
 	private static final long serialVersionUID = -7167881940806327162L;
 	@Id 
+	@GeneratedValue(generator="Animal_tissue")
+	@TableGenerator(name="Animal_tissue", table="sqlite_sequence",
+	    pkColumnName="name", valueColumnName="seq", pkColumnValue="Animal_tissue")
 	private Integer id;
 	private String name;
 	private String typeOfTissue;
@@ -107,6 +110,14 @@ public class Animal_tissue implements Serializable {
 	public void setTimeItLasts(int timeItLasts) {
 		this.timeItLasts = timeItLasts;
 	}
+	public List<Requested_organ> getRequested_organs(){
+		return requested_organs;
+	}
+	
+	public void setRequested_organs(List<Requested_organ> requested_organs){
+		this.requested_organs=requested_organs;
+	}
+
 	
 	public void addRequestedOrgan(Requested_organ requested_organ) {
 		if (!requested_organs.contains(requested_organ)) {
