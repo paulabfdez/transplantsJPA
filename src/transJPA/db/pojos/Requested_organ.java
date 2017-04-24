@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 
+
 @Entity
 @Table (name= "Requested_organs")
 
@@ -100,5 +101,18 @@ public class Requested_organ implements Serializable {
 		this.minWeight = minWeight;
 	}
 	
+	// Additional method to add to a list
+		public void addAnimalTissue(Animal_tissue animalTissue) {
+			if (!animalTissues.contains(animalTissue)) {
+				this.animalTissues.add(animalTissue);
+			}
+		}
+
+		// Additional method to remove from a list
+		public void removeAnimalTissue(Animal_tissue animalTissue) {
+			if (animalTissues.contains(animalTissue)) {
+				this.animalTissues.remove(animalTissue);
+			}
+		}
 //toString??
 }

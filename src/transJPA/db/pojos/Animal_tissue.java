@@ -20,7 +20,7 @@ public class Animal_tissue implements Serializable {
 	private Integer timeItLasts;
 	
 	@ManyToMany(mappedBy = "Requested_organs/animals") //name of the table with both FK
-	private List<Requested_organ> requested_organ;
+	private List<Requested_organ> requested_organs;
 	
 	
 	public Animal_tissue() {
@@ -108,5 +108,17 @@ public class Animal_tissue implements Serializable {
 		this.timeItLasts = timeItLasts;
 	}
 	
+	public void addRequestedOrgan(Requested_organ requested_organ) {
+		if (!requested_organs.contains(requested_organ)) {
+			this.requested_organs.add(requested_organ);
+		}
+	}
+
+	// Additional method to remove from a list
+	public void removeRequestedOrgan(Requested_organ requested_organ) {
+		if (requested_organs.contains(requested_organ)) {
+			this.requested_organs.remove(requested_organ);
+		}
+	}
 }
 
