@@ -33,12 +33,14 @@ public class Patient extends Person{
 	@JoinColumn(name = "hospital_id") // the FK
 	private Hospital hospital;
 	//el donor tambien tiene un hospital?o solo el paciente?
-	
-	
+	@ManyToOne
+	@JoinColumn(name = "Requested_organ_id")
+	private Requested_organ requested_organ;
 	public Patient(){
 		
 	}
 	
+
 	public Patient(String name, LocalDate birthDate,Float weight, Float height, String gender, String pathology, String bloodType, 
 			Integer lifeExpectancy, LocalDate additionDate){
 		super(name, birthDate,weight,height,gender, bloodType);
@@ -78,7 +80,44 @@ public class Patient extends Person{
 	public void setPathology(String pathology) {
 		this.pathology = pathology;
 	}
+	
+	public Requested_organ getRequested_organ(){
+		return requested_organ;
+	}
+	public void setRequested_organ (Requested_organ requested_organ){
+		this.requested_organ= requested_organ;
+	}
+	public List<Doctor> getDoctors() {
+		return doctors;
+	}
 
+	public void setDoctors(List<Doctor> doctors) {
+		this.doctors = doctors;
+	}
+
+	public Hospital getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
+
+	// Additional method to add to a list
+		public boolean addDoctor(Doctor doctor) {
+			if (!doctors.contains(doctor)) {
+				 return this.doctors.add(doctor);
+			}
+			else return false;
+		}
+
+		// Additional method to remove from a list
+		public boolean removeDoctor(Doctor doctor) {
+			if (doctors.contains(doctor)) {
+				return this.doctors.remove(doctor);
+			}
+			else return false;
+		}
 	@Override
 	public String toString() {
 		return "Patient [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", weight=" + weight + 

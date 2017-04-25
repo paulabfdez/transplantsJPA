@@ -41,6 +41,28 @@ public class Donor extends Person{
 		this.deadOrAlive = deadOrAlive;
 	}
 
+	public List<Organ> getOrgans(){
+		return organs;
+	}
+	
+	public void setOrgans(List<Organ> organs){
+		this.organs=organs;
+	}
+	public boolean addOrgan(Organ organ) {
+		if (!organs.contains(organ)) {
+			 return this.organs.add(organ);
+		}
+		else return false;
+	}
+
+	// Additional method to remove from a list
+	public boolean removeOrgan(Organ organ) {
+		if (organs.contains(organ)) {
+			return this.organs.remove(organ);
+		}
+		else return false;
+	}
+
 	@Override
 	public String toString() {
 		return "Donor [id=" + id + ", name=" + name + ", birthDate=" + birthDate

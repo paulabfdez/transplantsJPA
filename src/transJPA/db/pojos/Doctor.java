@@ -12,6 +12,9 @@ public class Doctor implements Serializable{
 
 	private static final long serialVersionUID = -1701687912909197672L;
 	@Id
+	@GeneratedValue(generator="Doctors")
+	@TableGenerator(name="Doctors", table="sqlite_sequence",
+	    pkColumnName="name", valueColumnName="seq", pkColumnValue="Doctors")
 	private Integer id;
 	private String registrationNumber;
 	private String specialization;
@@ -24,6 +27,8 @@ public class Doctor implements Serializable{
 	private List<Patient> patients;
 	
 	
+
+
 	//our default constructor
 	public Doctor (){
 	}
@@ -94,6 +99,36 @@ public class Doctor implements Serializable{
 		this.nameOfDoctor = nameOfDoctor;
 	}
 
+	public List<Patient> getPatients(){
+		return patients;
+	}
+	
+	public void setPatients(List<Patient> patients){
+		this.patients=patients;
+	}
+	public Hospital getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
+	
+	// Additional method to add to a list
+			public boolean addPatient(Patient patient) {
+				if (!patients.contains(patient)) {
+					return this.patients.add(patient);
+				}
+				else return false;
+			}
+
+			// Additional method to remove from a list
+			public boolean removePatient(Patient patient) {
+				if (patients.contains(patient)) {
+					return this.patients.remove(patient);
+				}
+				else return false;
+			}
 	@Override
 	public String toString() {
 		return "Doctor [\nregistrationNumber=" + registrationNumber + ", \nspecialization=" + specialization
