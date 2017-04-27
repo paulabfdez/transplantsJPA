@@ -17,6 +17,9 @@ public class Patient extends Person implements Serializable {
 	//should this one implement Serializable? Should person? Or both?
 	//EL ID ESTA EN LA CLASE PERSONA
 	@Id
+	@GeneratedValue(generator="Patients")
+	@TableGenerator(name="Patients", table="sqlite_sequence",
+	    pkColumnName="name", valueColumnName="seq", pkColumnValue="Patients")
 	private Integer id;
 	private Integer lifeExpectancy;
 	private String pathology;

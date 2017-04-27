@@ -1,5 +1,6 @@
 package transJPA.db.pojos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -7,8 +8,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Donors")
-public class Donor extends Person{
-	//que pasa con el id?
+public class Donor extends Person implements Serializable{
+	@Id
+	@GeneratedValue(generator="Donors")
+	@TableGenerator(name="Donors", table="sqlite_sequence",
+	    pkColumnName="name", valueColumnName="seq", pkColumnValue="Donors")
+	private Integer id;
 	private static final long serialVersionUID = 6705263044123670258L;
 	private String deadOrAlive;
     //same questions as Patient
