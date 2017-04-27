@@ -5,17 +5,19 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Patients")
-public class Patient extends Person{
+public class Patient extends Person implements Serializable {
 
 
 	private static final long serialVersionUID = 5283904286714952072L;
 	//should this one implement Serializable? Should person? Or both?
 	//EL ID ESTA EN LA CLASE PERSONA
-	
+	@Id
+	private Integer id;
 	private Integer lifeExpectancy;
 	private String pathology;
 	private LocalDate additionDate;
