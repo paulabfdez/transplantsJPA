@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "hospitals")
 
-
+//T
 public class Hospital implements Serializable{
 
 	private static final long serialVersionUID = -2900229453507535621L;
